@@ -44,8 +44,8 @@ Mat getQuant(const Mat &image, int q_level)
             int Y = image.at<uchar>(row, col);
             
 			for (int k = 0; k < q_level; k++){
-				if (Y > inter * k && Y <= inter * k + inter / 2)  Y = inter * (k + 1);
-				if (Y > inter * k + inter / 2 && Y <= inter * (k + 1)) Y = inter * (k + 1);
+				if ((Y > inter * k) && (Y <= inter * k + inter / 2)) 		Y = inter * k;
+				if ((Y > inter * k + inter / 2) && (Y <= inter * (k + 1)))  Y = inter * (k + 1);
 			}
             img_quant.at<uchar>(row, col) = Y;
             sko += (image.at<uchar>(row, col) - img_quant.at<uchar>(row, col)) * (image.at<uchar>(row, col) - img_quant.at<uchar>(row, col));
@@ -64,20 +64,27 @@ void lab1(const Mat &img_bgr){
 
     imshow("image bgr", img_bgr);
     imshow("image gray", img_gray);
+	imwrite("../../Images/Lab 1/image gray.jpg", img_gray);
 
     cout << "for origin: ";
     Mat quant = getQuant(img_gray, 256);
     imshow("Quantization with " + to_string(256) + " levels", quant);
-    Mat hist = getHist(img_gray);
-    imshow("histogram origin", hist);
+	imwrite("../../Images/Lab 1/Quantization with " + to_string(256) + " levels.jpg", quant);
 
-    for (int q = 2; q < 65; q*=2) {
+    Mat hist = getHist(img_gray);
+    imshow("Histogram origin", hist);
+	imwrite("../../Images/Lab 1/histogram with " + to_string(256) + " levels.jpg", hist);
+
+
+    for (int q = 2; q < 256; q*=2) {
     cout << "for q = " << q << ": ";
     Mat quant = getQuant(img_gray, q);
     imshow("Quantization with " + to_string(q) + " levels", quant);
+	imwrite("../../Images/Lab 1/Quantization with " + to_string(q) + " levels.jpg", quant);
     
     Mat hist = getHist(quant);
-    imshow("histogram with " + to_string(q) + " levels", hist);
+    imshow("Histogram with " + to_string(q) + " levels", hist);
+	imwrite("../../Images/Lab 1/histogram with " + to_string(q) + " levels.jpg", hist);
     }
 
     waitKey();
