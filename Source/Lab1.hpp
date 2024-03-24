@@ -5,8 +5,7 @@
 using namespace std;
 using namespace cv;
 
-Mat getHist(const Mat &image)
-{
+Mat getHist(const Mat &image){
     int hist_h = 400, hist_w = 256*3;
 
 	Mat hist = Mat::zeros(1, 256, CV_64FC1);
@@ -31,8 +30,7 @@ Mat getHist(const Mat &image)
 	return hist_img;
 }
 
-Mat getQuant(const Mat &image, int q_level)
-{	
+Mat getQuant(const Mat &image, int q_level){	
     double sko = 0.0;
 	int inter = 255 / (q_level - 1);
 
