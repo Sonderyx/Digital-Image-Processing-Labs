@@ -48,9 +48,10 @@ Mat getDCT(const Mat &image_block){
     return img_dct;
 }
 
-static void onMouse(int event, int x, int y, int, void* param){
+static void onMouse(int event, int x, int y, int flags, void* param){
 	if (event != EVENT_LBUTTONDOWN) return;
-
+int flag = flags;
+cout<<flag;
 	int blockX = x, blockY = y;
 
     Image* img = (Image*)param; //получаем указатель на структуру изображения

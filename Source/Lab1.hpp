@@ -64,7 +64,8 @@ void lab1(const Mat &img_bgr){
     imshow("image gray", img_gray);
 	imwrite("../../Images/Lab 1/image gray.jpg", img_gray);
 
-    cout << "for origin: ";
+
+
     Mat quant = getQuant(img_gray, 256);
     imshow("Quantization with " + to_string(256) + " levels", quant);
 	imwrite("../../Images/Lab 1/Quantization with " + to_string(256) + " levels.jpg", quant);
@@ -83,7 +84,28 @@ void lab1(const Mat &img_bgr){
     Mat hist = getHist(quant);
     imshow("Histogram with " + to_string(q) + " levels", hist);
 	imwrite("../../Images/Lab 1/histogram with " + to_string(q) + " levels.jpg", hist);
+
     }
+
+	cout << "for origin: ";
+	double mean = 0, sko_orig = 0, summa_kvadrat_rasnosti = 0;
+	for (int row = 0; row < img_gray.rows; row++){
+		for(int col = 0; col < img_gray.cols; col++){
+			mean += img_gray.at<uchar>(row, col);
+		}
+	}
+	mean /= (img_gray.rows*img_gray.cols);
+	// cout << mean;
+
+	for (int row = 0; row < img_gray.rows; row++){
+		for(int col = 0; col < img_gray.cols; col++){
+			summa_kvadrat_rasnosti += pow((mean - img_gray.at<uchar>(row, col)), 2);
+		}
+	}
+	// cout << summa_kvadrat_rasnosti;
+	summa_kvadrat_rasnosti /= (img_gray.rows*img_gray.cols);
+	sko_orig = sqrt(summa_kvadrat_rasnosti);
+	cout << sko_orig;
 
     waitKey();
 }

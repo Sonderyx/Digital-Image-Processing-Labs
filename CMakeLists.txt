@@ -10,11 +10,13 @@ file(GLOB_RECURSE sources
 # ./Source/*.h 
 ./Source/Lab1.hpp
 ./Source/Lab2.hpp 
+./Source/Lab3.hpp 
 )
 
 add_executable(${PROJECT_NAME} ${sources})
 
 # OpenCV
+set(OpenCV_DIR C:/work/libraries/opencv/build)
 find_package(OpenCV REQUIRED)
 
 include_directories(${OpenCV_INCLUDE_DIRS})
