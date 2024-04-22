@@ -9,6 +9,7 @@ file(GLOB_RECURSE sources
 ./Source/Lab2.hpp 
 ./Source/Lab3.hpp 
 ./Source/Lab4.hpp 
+./Source/Lab5.hpp 
 )
 
 add_executable(${PROJECT_NAME} ${sources})

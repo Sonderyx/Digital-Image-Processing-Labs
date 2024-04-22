@@ -231,11 +231,11 @@ void lab4(const Mat &img_bgr){
     imwrite("../../Images/Lab 4/bin_open.jpg", img.open);
 
     erosion(img.gray, img.erosion);
-    // imshow("gs_erosion", img.erosion);
+    imshow("gs_erosion", img.erosion);
     imwrite("../../Images/Lab 4/gs_erosion.jpg", img.erosion);
 
     dilation(img.gray, img.dilation);
-    // imshow("gs_dilation", img.dilation);
+    imshow("gs_dilation", img.dilation);
     imwrite("../../Images/Lab 4/gs_dilation.jpg", img.dilation);
 
     closing(img.gray, img.close);
@@ -243,7 +243,7 @@ void lab4(const Mat &img_bgr){
     imwrite("../../Images/Lab 4/gs_close.jpg", img.close);
 
     opening(img.gray, img.open);
-    // imshow("gs_open", img.open);
+    imshow("gs_open", img.open);
     imwrite("../../Images/Lab 4/gs_open.jpg", img.open);
 
     contour(img.gray, img.contour);

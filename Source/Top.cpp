@@ -1,7 +1,8 @@
 // #include "Lab1.hpp"
 // #include "Lab2.hpp"
 // #include "Lab3.hpp"
-#include "Lab4.hpp"
+// #include "Lab4.hpp"
+#include "Lab5.hpp"
 
 int main() {
     // string image_path = "../../Images/Orion.png";
@@ -20,6 +21,7 @@ int main() {
     // lab1(img_bgr);
     // lab2(img_bgr);
     // lab3(img_bgr);
-    lab4(img_bgr);
+    // lab4(img_bgr);
+    lab5(img_bgr);
     return 0;
 }
