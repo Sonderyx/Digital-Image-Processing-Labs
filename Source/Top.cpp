@@ -14,8 +14,10 @@ int main() {
     // string image_path = "../../Images/Dash.jpg";
     // string image_path = "../../Images/FP1.png";
     // string image_path = "../../Images/Shrek.png";
-    string image_path = "../../Images/Morph1.png";
+    // string image_path = "../../Images/Morph1.png";
     // string image_path = "../../Images/Plane.jpg";
+    // string image_path = "../../Images/Levitan.jpg";
+    string image_path = "../../Images/test.jpg";
 
     Mat img_bgr = imread(image_path);
     // lab1(img_bgr);

@@ -39,7 +39,7 @@ Mat getDCT(const Mat &image_block){
     Mat imageBlock64F;
 	image_block.convertTo(imageBlock64F, CV_64F);
     Mat DCT = basisMat * imageBlock64F * basisMat.t();
-    // std::cout << DCT << std::endl;
+    std::cout << DCT << std::endl;
 
 	Mat DCT8U;
 	DCT.convertTo(DCT8U, CV_8U);
