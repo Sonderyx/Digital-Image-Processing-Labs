@@ -7,12 +7,9 @@ using namespace std;
 using namespace cv;
 
 struct Image {
-    //default
     Mat bgr;
     Mat gray;
-    // Mat quant;
 
-    // Mat gamma;
     int compression;
 
     Mat dct_orig;
@@ -129,7 +126,7 @@ void DCT_direct(Mat &src, Mat &dst, int quality) {
                 //применяем гамму
                 gammaDivision(DCT64F, gamma, block_size);
 
-                //собираем изобраэение по блокам 8х8
+                //собираем изображение по блокам 8х8
                 DCT64F.copyTo(dst(Rect(block_col, block_row, block_size, block_size)));
             }
     // Конвертируем в 8 бит
