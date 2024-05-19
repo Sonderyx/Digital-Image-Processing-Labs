@@ -42,7 +42,7 @@ Mat getHist(const Mat &src) {
 	return hist_img;
 }
 
-vector<double> probality(const Mat &src){
+vector<double> probality(const Mat &src) {
     vector<double> prob(256);
     for (int i = 0; i < src.cols; i++)
         for (int j = 0; j < src.rows; j++) {

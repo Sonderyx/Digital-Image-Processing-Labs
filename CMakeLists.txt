@@ -1,15 +1,10 @@
 cmake_minimum_required(VERSION 3.15)
-project(DIP_Lab1)
+project(DIP)
 
 # Добавляем файлы
-file(GLOB_RECURSE sources 
-./Source/Top.cpp 
-# ./Source/*.h 
-./Source/Lab1.hpp
-./Source/Lab2.hpp 
-./Source/Lab3.hpp 
-./Source/Lab4.hpp 
-./Source/Lab5.hpp 
+file(GLOB_RECURSE sources
+./Source/Top.cpp
+./Source/*.hpp
 )
 
 add_executable(${PROJECT_NAME} ${sources})
