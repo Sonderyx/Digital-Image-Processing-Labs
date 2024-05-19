@@ -109,26 +109,25 @@ void DCT_direct(Mat &src, Mat &dst, int quality) {
     createBasisMat(basisMat, block_size);
 
     //перебираем изображение по блокам 8х8
-    for (int block_row = 0; block_row < img_flt.rows; block_row += block_size)
-        for (int block_col = 0; block_col < img_flt.cols; block_col += block_size)
-            if (block_row + block_size <= img_flt.rows && block_col + block_size <= img_flt.cols) {
+    for (int block_row = 0; block_row < dst.rows; block_row += block_size)
+        for (int block_col = 0; block_col < dst.cols; block_col += block_size) {
 
-                //выделяем область 8х8 исходного изображения
-                Mat ROI8U = img_flt(Rect(block_col, block_row, block_size, block_size));
+            //выделяем область 8х8 исходного изображения
+            Mat ROI8U = img_flt(Rect(block_col, block_row, block_size, block_size));
 
-                // Преобразуем в double для ДКП
-                Mat ROI64F;
-                ROI8U.convertTo(ROI64F, CV_64FC1);
+            // Преобразуем в double для ДКП
+            Mat ROI64F;
+            ROI8U.convertTo(ROI64F, CV_64FC1);
 
-                //применяем DCT
-                Mat DCT64F = basisMat * ROI64F * basisMat.t();
+            //применяем DCT
+            Mat DCT64F = basisMat * ROI64F * basisMat.t();
 
-                //применяем гамму
-                gammaDivision(DCT64F, gamma, block_size);
+            //применяем гамму
+            gammaDivision(DCT64F, gamma, block_size);
 
-                //собираем изображение по блокам 8х8
-                DCT64F.copyTo(dst(Rect(block_col, block_row, block_size, block_size)));
-            }
+            //собираем изображение по блокам 8х8
+            DCT64F.copyTo(dst(Rect(block_col, block_row, block_size, block_size)));
+        }
     // Конвертируем в 8 бит
     dst.convertTo(dst, CV_8UC1);
 }
