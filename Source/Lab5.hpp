@@ -311,18 +311,6 @@ Mat vec2mat(vector<uchar>& zigzag, int width, int height) {
     return image;
 }
 
-// Функция для создания матрицы базисных функций для IDCT
-Mat createIDCTMatrix(int size) {
-    Mat basis(size, size, CV_32F);
-    double scale = sqrt(2.0 / size);
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size; j++) {
-            basis.at<float>(j, i) = (i == 0) ? sqrt(1.0 / size) : scale * cos(((2 * j + 1) * i * CV_PI) / (2 * size));
-        }
-    }
-    return basis;
-}
-
 void lab5(const Mat &img_bgr) {
     Image img;
     img.bgr = img_bgr;
