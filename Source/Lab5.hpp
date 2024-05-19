@@ -372,9 +372,11 @@ void lab5(const Mat &img_bgr) {
 
     img.dct_decoded = vec2mat(vec_decoded, img.dct_orig.cols, img.dct_orig.rows);
     imshow("image dct decoded", img.dct_decoded);
+    imwrite("../../Images/Lab 5/image dct decoded.jpg", img.dct_decoded);
 
     DCT_inverse(img.dct_decoded, img.gray_decoded, img.compression);
     imshow("image gray decoded", img.gray_decoded);
+    imwrite("../../Images/Lab 5/image gray decoded.jpg", img.gray_decoded);
 
     waitKey();
 }
