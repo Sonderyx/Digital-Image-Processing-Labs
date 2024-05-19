@@ -119,7 +119,7 @@ void DCT_direct(Mat &src, Mat &dst, int quality) {
                 //выделяем область 8х8 исходного изображения
                 Mat ROI8U = img_flt(Rect(block_col, block_row, block_size, block_size));
 
-                // Преобразуем в float для ДКП
+                // Преобразуем в double для ДКП
                 Mat ROI64F;
                 ROI8U.convertTo(ROI64F, CV_64FC1);
 
@@ -153,7 +153,7 @@ void DCT_inverse(Mat &src, Mat &dst, int quality) {
             // Выделяем область 8х8 из DCT-изображения
             Mat DCT8U = src(Rect(block_col, block_row, block_size, block_size));
 
-            // Преобразуем в float для обратного ДКП
+            // Преобразуем в double для обратного ДКП
             Mat DCT64F;
             DCT8U.convertTo(DCT64F, CV_64FC1);
 
@@ -270,7 +270,7 @@ vector<uchar> RLE2vec(vector<pair<uchar, uchar>>& rle) {
 
 // Функция для преобразования зигзаг-последовательности в блок 8x8
 Mat vec2block(vector<uchar>& zigzag, int startIdx) {
-    Mat block(8, 8, CV_32F);  // Используем float для хранения значений
+    Mat block(8, 8, CV_8UC1);  // Используем double для хранения значений
     vector<uchar> indexMap = {
         0,  1,  5,  6, 14, 15, 27, 28,
         2,  4,  7, 13, 16, 26, 29, 42,
@@ -285,7 +285,7 @@ Mat vec2block(vector<uchar>& zigzag, int startIdx) {
     for (int i = 0; i < 64; ++i) {
         int x = i / 8;
         int y = i % 8;
-        block.at<float>(x, y) = zigzag[startIdx + indexMap[i]];
+        block.at<uchar>(x, y) = zigzag[startIdx + indexMap[i]];
     }
 
     return block;
