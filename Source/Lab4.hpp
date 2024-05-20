@@ -195,9 +195,9 @@ void MG(const Mat &src, Mat &dst)
                     }
                 eroded_gradient_img.at<uchar>(j, i) = min;
             }
-        sum_img = sum_img + eroded_gradient_img;
+        sum_img += (eroded_gradient_img/3);
     }
-    dst = sum_img / 3;
+    dst = sum_img;
 }
 
 void lab4(const Mat &img_bgr){
